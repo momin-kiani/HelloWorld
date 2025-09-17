@@ -107,9 +107,11 @@ function Onboarding({ onStart }) {
           <Text style={styles.ctaText}>Get Started</Text>
         </TouchableOpacity>
 
-        <Text style={styles.footerText}>
-          Already have an account? <Text style={styles.linkText}>Log In</Text>
-        </Text>
+        <TouchableOpacity onPress={() => onStart('login')}>
+          <Text style={styles.footerText}>
+            Already have an account? <Text style={styles.linkText}>Log In</Text>
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -117,7 +119,20 @@ function Onboarding({ onStart }) {
 
 export default function App() {
   const [started, setStarted] = useState(false);
-  return started ? <RootNavigator /> : <Onboarding onStart={() => setStarted(true)} />;
+  const [loginMode, setLoginMode] = useState(false);
+  
+  const handleStart = (mode) => {
+    if (mode === 'login') {
+      setLoginMode(true);
+    }
+    setStarted(true);
+  };
+  
+  if (started) {
+    return <RootNavigator loginMode={loginMode} />;
+  }
+  
+  return <Onboarding onStart={handleStart} />;
 }
 
 const styles = StyleSheet.create({
@@ -161,6 +176,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 28,
     alignItems: 'center',
+    marginHorizontal: 0,
   },
   ctaText: {
     color: '#FFFFFF',
