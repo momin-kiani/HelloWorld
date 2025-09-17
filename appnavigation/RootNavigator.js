@@ -8,6 +8,16 @@ import LeaderboardScreen from '../screens/LeaderboardScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SampleScreen from '../screens/SampleScreen';
 import LoginScreen from '../screens/LoginScreen';
+import BirthOfMaryamScreen from '../screens/BirthOfMaryamScreen';
+import HurufScreen from '../screens/HurufScreen';
+import WordsScreen from '../screens/WordsScreen';
+import KuizScreen from '../screens/KuizScreen';
+import PerkataanScreen from '../screens/PerkataanScreen';
+import TranslateScreen from '../screens/TranslateScreen';
+import WaktuSolatScreen from '../screens/WaktuSolatScreen';
+import AlFatihahScreen from '../screens/AlFatihahScreen';
+import AlBaqarahScreen from '../screens/AlBaqarahScreen';
+import RoomScreen from '../screens/RoomScreen';
 
 const TABS = {
   lessons: LessonsScreen,
@@ -25,6 +35,40 @@ export default function RootNavigator({ loginMode = false }) {
   const navigate = (screenName, params = {}) => {
     if (screenName === 'SampleScreen') {
       setCurrentScreen('sample');
+      setScreenParams(params);
+    } else if (screenName === 'BirthOfMaryamScreen') {
+      setCurrentScreen('birthOfMaryam');
+      setScreenParams(params);
+    } else if (screenName === 'HurufScreen') {
+      setCurrentScreen('huruf');
+      setScreenParams(params);
+    } else if (screenName === 'WordsScreen') {
+      setCurrentScreen('words');
+      setScreenParams(params);
+    } else if (screenName === 'KuizScreen') {
+      setCurrentScreen('kuiz');
+      setScreenParams(params);
+    } else if (screenName === 'PerkataanScreen') {
+      setCurrentScreen('perkataan');
+      setScreenParams(params);
+    } else if (screenName === 'TranslateScreen') {
+      setCurrentScreen('translate');
+      setScreenParams(params);
+    } else if (screenName === 'WaktuSolatScreen') {
+      setCurrentScreen('waktuSolat');
+      setScreenParams(params);
+    } else if (screenName === 'AlFatihahScreen') {
+      setCurrentScreen('alFatihah');
+      setScreenParams(params);
+    } else if (screenName === 'AlBaqarahScreen') {
+      setCurrentScreen('alBaqarah');
+      setScreenParams(params);
+    } else if (screenName === 'RoomScreen') {
+      setCurrentScreen('room');
+      setScreenParams(params);
+    } else if (screenName === 'QuranScreen') {
+      setActiveTab('quran');
+      setCurrentScreen('main');
       setScreenParams(params);
     } else {
       setCurrentScreen(screenName);
@@ -48,6 +92,46 @@ export default function RootNavigator({ loginMode = false }) {
 
   if (currentScreen === 'sample') {
     return <SampleScreen route={{ params: screenParams }} navigation={navigation} />;
+  }
+
+  if (currentScreen === 'birthOfMaryam') {
+    return <BirthOfMaryamScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'huruf') {
+    return <HurufScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'words') {
+    return <WordsScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'kuiz') {
+    return <KuizScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'perkataan') {
+    return <PerkataanScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'translate') {
+    return <TranslateScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'waktuSolat') {
+    return <WaktuSolatScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'alFatihah') {
+    return <AlFatihahScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'alBaqarah') {
+    return <AlBaqarahScreen navigation={navigation} />;
+  }
+
+  if (currentScreen === 'room') {
+    return <RoomScreen navigation={navigation} />;
   }
 
   const ActiveComponent = TABS[activeTab];

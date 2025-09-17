@@ -17,42 +17,52 @@ function SectionToggle({ active, onChange }) {
 }
 
 const vocabItems = [
-  { name: 'Alphabet', color: '#E8F4FD', image: '🔤' },
-  { name: 'Maryam', color: '#F0E6FF', image: '👩' },
-  { name: 'Ibrahim', color: '#FFF2E8', image: '👨' },
-  { name: 'Adam', color: '#E8F8F0', image: '👤' },
-  { name: 'Hud', color: '#F0F8FF', image: '🏔️' },
-  { name: 'Salih', color: '#FFF8E8', image: '🐪' },
-  { name: 'Shuayb', color: '#F8F0FF', image: '🏜️' },
-  { name: 'Musa', color: '#E8F0FF', image: '🏛️' },
+  { name: 'Alphabet', color: '#E8F4FD', image: '🔤', subtitle: 'Letters' },
+  { name: 'Maryam', color: '#F0E6FF', image: '👩', subtitle: 'The Birth of Maryam' },
+  { name: 'Ibrahim', color: '#FFF2E8', image: '👨', subtitle: 'The Story of Ibrahim' },
+  { name: 'Adam', color: '#E8F8F0', image: '👤', subtitle: 'The First Man' },
+  { name: 'Hud', color: '#F0F8FF', image: '🏔️', subtitle: 'The Prophet Hud' },
+  { name: 'Salih', color: '#FFF8E8', image: '🐪', subtitle: 'The Prophet Salih' },
+  { name: 'Shuayb', color: '#F8F0FF', image: '🏜️', subtitle: 'The Prophet Shuayb' },
+  { name: 'Musa', color: '#E8F0FF', image: '🏛️', subtitle: 'The Prophet Musa' },
+  { name: 'Isa', color: '#FFE6F0', image: '✝️', subtitle: 'The Prophet Isa' },
+  { name: 'Nuh', color: '#F0F8FF', image: '🚢', subtitle: 'The Prophet Nuh' },
 ];
 
 const grammarItems = [
-  { name: 'Lesson 01: Intro', color: '#8B5CF6', duration: '2 mins' },
-  { name: 'Lesson 02: Words', color: '#3B82F6', duration: '1 min' },
-  { name: 'Lesson 03: Words 2', color: '#F59E0B', duration: '2 mins' },
-  { name: 'Lesson 04: Words 3', color: '#10B981', duration: '1 min' },
-  { name: 'Lesson 05: Words 4', color: '#8B5CF6', duration: '2 mins' },
-  { name: 'Exercise 01', color: '#06B6D4', duration: '3 mins' },
-  { name: 'Lesson 06: Pronouns', color: '#10B981', duration: '1 min' },
-  { name: 'Lesson 07: Pronouns 2', color: '#3B82F6', duration: '3 mins' },
-  { name: 'Lesson 08: Pronouns 3', color: '#F59E0B', duration: '3 mins' },
-  { name: 'Lesson 09: Pronouns 4', color: '#8B5CF6', duration: '2 mins' },
-  { name: 'Exercise 02', color: '#8B5CF6', duration: '2 mins' },
-  { name: 'Lesson 10: Pronouns 5', color: '#06B6D4', duration: '1 min' },
-  { name: 'Lesson 11: Pronouns 6', color: '#10B981', duration: '2 mins' },
-  { name: 'Exercise 03', color: '#3B82F6', duration: '1 min' },
-  { name: 'Lesson 12: Sentences', color: '#F59E0B', duration: '1 min' },
-  { name: 'Exercise 04', color: '#8B5CF6', duration: '1 min' },
-  { name: 'Lesson 13: Sentences 2', color: '#10B981', duration: '2 mins' },
+  { name: 'Lesson 01: Intro', color: '#8B5CF6', duration: '2 mins', type: 'lesson' },
+  { name: 'Lesson 02: Words', color: '#3B82F6', duration: '1 min', type: 'lesson' },
+  { name: 'Lesson 03: Words 2', color: '#F59E0B', duration: '2 mins', type: 'lesson' },
+  { name: 'Lesson 04: Words 3', color: '#10B981', duration: '1 min', type: 'lesson' },
+  { name: 'Lesson 05: Words 4', color: '#8B5CF6', duration: '2 mins', type: 'lesson' },
+  { name: 'Exercise 01', color: '#06B6D4', duration: '3 mins', type: 'exercise' },
+  { name: 'Lesson 06: Pronouns', color: '#10B981', duration: '1 min', type: 'lesson' },
+  { name: 'Lesson 07: Pronouns 2', color: '#3B82F6', duration: '3 mins', type: 'lesson' },
+  { name: 'Lesson 08: Pronouns 3', color: '#F59E0B', duration: '3 mins', type: 'lesson' },
+  { name: 'Lesson 09: Pronouns 4', color: '#8B5CF6', duration: '2 mins', type: 'lesson' },
+  { name: 'Exercise 02', color: '#8B5CF6', duration: '2 mins', type: 'exercise' },
+  { name: 'Lesson 10: Pronouns 5', color: '#06B6D4', duration: '1 min', type: 'lesson' },
+  { name: 'Lesson 11: Pronouns 6', color: '#10B981', duration: '2 mins', type: 'lesson' },
+  { name: 'Exercise 03', color: '#3B82F6', duration: '1 min', type: 'exercise' },
+  { name: 'Lesson 12: Sentences', color: '#F59E0B', duration: '1 min', type: 'lesson' },
+  { name: 'Exercise 04', color: '#8B5CF6', duration: '1 min', type: 'exercise' },
+  { name: 'Lesson 13: Sentences 2', color: '#10B981', duration: '2 mins', type: 'lesson' },
+  { name: 'Lesson 14: Advanced', color: '#8B5CF6', duration: '3 mins', type: 'lesson' },
+  { name: 'Exercise 05', color: '#F59E0B', duration: '2 mins', type: 'exercise' },
+  { name: 'Final Project', color: '#10B981', duration: '5 mins', type: 'project', isLarge: true },
 ];
 
 export default function LessonsScreen({ navigation }) {
   const [tab, setTab] = useState(0); // 0 vocab, 1 grammar
 
   const handleItemPress = (item) => {
-    // Navigate to a sample screen
-    navigation?.navigate('SampleScreen', { title: item.name });
+    if (item.name === 'Maryam') {
+      navigation?.navigate('BirthOfMaryamScreen');
+    } else if (item.name === 'Alphabet') {
+      navigation?.navigate('HurufScreen');
+    } else {
+      navigation?.navigate('SampleScreen', { title: item.name });
+    }
   };
 
   return (
@@ -74,33 +84,90 @@ export default function LessonsScreen({ navigation }) {
       <SectionToggle active={tab} onChange={setTab} />
       
       {tab === 0 && (
-        <View style={styles.continueBanner}>
+        <TouchableOpacity style={styles.continueBanner} onPress={() => navigation?.navigate('BirthOfMaryamScreen')}>
           <Text style={styles.continueIcon}>📚</Text>
           <View style={styles.continueText}>
-            <Text style={styles.continueTitle}>Continue: Letters</Text>
+            <Text style={styles.continueTitle}>Continue: Maryam</Text>
             <Text style={styles.continueSubtitle}>2. Lesson</Text>
           </View>
           <Text style={styles.continueArrow}>→</Text>
-        </View>
+        </TouchableOpacity>
       )}
 
       <ScrollView contentContainerStyle={styles.listContent}>
         {tab === 0 ? (
-          vocabItems.map((item, i) => (
-            <TouchableOpacity key={i} style={[styles.vocabCard, { backgroundColor: item.color }]} onPress={() => handleItemPress(item)}>
-              <Text style={styles.vocabImage}>{item.image}</Text>
-              <Text style={styles.vocabTitle}>{item.name}</Text>
-            </TouchableOpacity>
-          ))
-        ) : (
-          <View style={styles.grammarGrid}>
-            {grammarItems.map((item, i) => (
-              <TouchableOpacity key={i} style={[styles.grammarCard, { backgroundColor: item.color }]} onPress={() => handleItemPress(item)}>
-                <View style={styles.grammarDot} />
-                <Text style={styles.grammarTitle}>{item.name}</Text>
-                <Text style={styles.grammarDuration}>{item.duration}</Text>
+          <View style={styles.vocabContainer}>
+            {vocabItems.map((item, i) => (
+              <TouchableOpacity key={i} style={[styles.vocabCard, { backgroundColor: item.color }]} onPress={() => handleItemPress(item)}>
+                <View style={styles.vocabImageContainer}>
+                  <Text style={styles.vocabImage}>{item.image}</Text>
+                </View>
+                <View style={styles.vocabContent}>
+                  <Text style={styles.vocabTitle}>{item.name}</Text>
+                  <View style={styles.progressBar}>
+                    <View style={[styles.progressFill, { width: item.name === 'Maryam' ? '20%' : '0%' }]} />
+                  </View>
+                </View>
               </TouchableOpacity>
             ))}
+          </View>
+        ) : (
+          <View style={styles.grammarContainer}>
+            {grammarItems.map((item, i) => {
+              // First item: single centered square
+              if (i === 0) {
+                return (
+                  <View key={i} style={styles.grammarRow}>
+                    <View style={styles.grammarSpacer} />
+                    <TouchableOpacity style={[styles.grammarCard, { backgroundColor: item.color }]} onPress={() => navigation?.navigate('WordsScreen')}>
+                      <View style={styles.grammarDot} />
+                      <Text style={styles.grammarTitle}>{item.name}</Text>
+                      <Text style={styles.grammarDuration}>{item.duration}</Text>
+                    </TouchableOpacity>
+                    <View style={styles.grammarSpacer} />
+                  </View>
+                );
+              }
+              
+              // Last item: large rectangle spanning 2x2
+              if (item.isLarge) {
+                return (
+                  <View key={i} style={styles.grammarRow}>
+                    <TouchableOpacity style={[styles.grammarLargeCard, { backgroundColor: item.color }]} onPress={() => navigation?.navigate('WordsScreen')}>
+                      <View style={styles.grammarDot} />
+                      <Text style={styles.grammarTitle}>{item.name}</Text>
+                      <Text style={styles.grammarDuration}>{item.duration}</Text>
+                      <Text style={styles.grammarImage}>📚</Text>
+                    </TouchableOpacity>
+                  </View>
+                );
+              }
+              
+              // Regular items: 2 per row
+              const isFirstInRow = (i - 1) % 2 === 0;
+              const isLastInRow = i % 2 === 0;
+              
+              if (isFirstInRow) {
+                return (
+                  <View key={i} style={styles.grammarRow}>
+                    <TouchableOpacity style={[styles.grammarCard, { backgroundColor: item.color }]} onPress={() => navigation?.navigate('WordsScreen')}>
+                      <View style={styles.grammarDot} />
+                      <Text style={styles.grammarTitle}>{item.name}</Text>
+                      <Text style={styles.grammarDuration}>{item.duration}</Text>
+                    </TouchableOpacity>
+                    {isLastInRow && <View style={styles.grammarSpacer} />}
+                  </View>
+                );
+              } else {
+                return (
+                  <TouchableOpacity key={i} style={[styles.grammarCard, { backgroundColor: item.color }]} onPress={() => navigation?.navigate('WordsScreen')}>
+                    <View style={styles.grammarDot} />
+                    <Text style={styles.grammarTitle}>{item.name}</Text>
+                    <Text style={styles.grammarDuration}>{item.duration}</Text>
+                  </TouchableOpacity>
+                );
+              }
+            })}
           </View>
         )}
       </ScrollView>
@@ -153,7 +220,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 16,
     padding: 16,
-    borderRadius: 12,
+    borderRadius: 30,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
@@ -164,27 +231,71 @@ const styles = StyleSheet.create({
   continueSubtitle: { fontSize: 14, color: '#666' },
   continueArrow: { fontSize: 18, color: '#000' },
   listContent: { padding: 16, paddingBottom: 120 },
+  vocabContainer: { flex: 1 },
   vocabCard: {
     borderRadius: 16,
-    padding: 20,
+    padding: 16,
     marginBottom: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  vocabImageContainer: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
   },
   vocabImage: { fontSize: 32 },
-  vocabTitle: { fontSize: 20, fontWeight: '700', flex: 1 },
-  grammarGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    gap: 12,
+  vocabContent: { flex: 1 },
+  vocabTitle: { 
+    fontSize: 18, 
+    fontWeight: '700', 
+    marginBottom: 8,
+    color: '#151515' 
   },
+  progressBar: {
+    height: 4,
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    borderRadius: 2,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 2,
+  },
+  grammarContainer: { flex: 1 },
+  grammarRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+    alignItems: 'flex-start',
+  },
+  grammarSpacer: { width: '48%' },
   grammarCard: {
     width: '48%',
+    height: 80,
+    borderRadius: 16,
+    padding: 12,
+    position: 'relative',
+    justifyContent: 'center',
+  },
+  grammarLargeCard: {
+    width: '100%',
+    height: 120,
     borderRadius: 16,
     padding: 16,
     position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   grammarDot: {
     position: 'absolute',
@@ -196,16 +307,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#F28C28',
   },
   grammarTitle: { 
-    fontSize: 14, 
+    fontSize: 12, 
     fontWeight: '700', 
     color: '#FFFFFF',
     marginTop: 8,
     marginBottom: 4,
+    textAlign: 'center',
   },
   grammarDuration: { 
-    fontSize: 12, 
+    fontSize: 10, 
     color: '#FFFFFF',
     opacity: 0.8,
+    textAlign: 'center',
+  },
+  grammarImage: {
+    fontSize: 24,
+    marginTop: 8,
   },
 });
 

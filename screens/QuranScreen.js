@@ -115,15 +115,21 @@ export default function QuranScreen({ navigation }) {
   const [tab, setTab] = useState('Surahs');
 
   const handleSurahPress = (surah) => {
-    navigation?.navigate('SampleScreen', { title: surah.name });
+    if (surah.name === 'Al-Fatihah') {
+      navigation?.navigate('AlFatihahScreen');
+    } else if (surah.name === 'Al-Baqarah') {
+      navigation?.navigate('AlBaqarahScreen');
+    } else {
+      navigation?.navigate('SampleScreen', { title: surah.name });
+    }
   };
 
   const handleRoomPress = (room) => {
-    navigation?.navigate('SampleScreen', { title: room.name });
+    navigation?.navigate('RoomScreen', { title: room.name });
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <View style={styles.header}>
         <Text style={styles.title}>Quran</Text>
         <Text style={styles.todayText}>Today 0 min</Text>
@@ -163,7 +169,7 @@ export default function QuranScreen({ navigation }) {
             <Text style={styles.searchIcon}>🔍</Text>
           </View>
 
-          <ScrollView contentContainerStyle={styles.listContent}>
+          <View style={styles.listContent}>
             {surahData.map((juz, juzIndex) => (
               <View key={juzIndex}>
                 <Text style={styles.juzTitle}>Juz' {juz.juz}</Text>
@@ -187,24 +193,25 @@ export default function QuranScreen({ navigation }) {
                 ))}
               </View>
             ))}
-          </ScrollView>
+          </View>
         </>
       ) : (
-        <ScrollView contentContainerStyle={styles.listContent}>
+        <View style={styles.listContent}>
           {roomData.map((room, i) => (
             <TouchableOpacity key={i} style={styles.roomCard} onPress={() => handleRoomPress(room)}>
               <Text style={styles.roomEmoji}>{room.image}</Text>
               <Text style={styles.roomName}>{room.name}</Text>
             </TouchableOpacity>
           ))}
-        </ScrollView>
+        </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#FFFFFF' },
+  scrollContent: { paddingBottom: 120 },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',

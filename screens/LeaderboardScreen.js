@@ -18,9 +18,6 @@ export default function LeaderboardScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Leaderboard</Text>
-        <TouchableOpacity style={styles.addButton} onPress={handleCreateGroup}>
-          <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
       </View>
       
       <View style={styles.content}>
@@ -34,25 +31,29 @@ export default function LeaderboardScreen({ navigation }) {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card} onPress={handleCreateGroup}>
-          <View style={styles.cardIcon}>
-            <Text style={styles.cardIconText}>+</Text>
-          </View>
-          <View style={styles.cardContent}>
-            <Text style={styles.cardTitle}>Create your group</Text>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.createGroupContainer}>
+          <TouchableOpacity style={styles.createGroupCard} onPress={handleCreateGroup}>
+            <View style={styles.createGroupIcon}>
+              <Text style={styles.createGroupIconText}>+</Text>
+            </View>
+            <View style={styles.createGroupContent}>
+              <Text style={styles.createGroupTitle}>Create your group</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity style={styles.donateCard} onPress={handleDonate}>
-          <View style={styles.donateIcon}>
-            <Text style={styles.donateIconText}>🎁</Text>
-          </View>
-          <View style={styles.donateContent}>
-            <Text style={styles.donateTitle}>I want to donate!</Text>
-            <Text style={styles.donateSubtitle}>Help a student on their learning journey with a Quranic Pro membership.</Text>
-          </View>
-          <Text style={styles.donateArrow}>→</Text>
-        </TouchableOpacity>
+        <View style={styles.donateContainer}>
+          <TouchableOpacity style={styles.donateCard} onPress={handleDonate}>
+            <View style={styles.donateIcon}>
+              <Text style={styles.donateIconText}>🎁</Text>
+            </View>
+            <View style={styles.donateContent}>
+              <Text style={styles.donateTitle}>I want to donate!</Text>
+              <Text style={styles.donateSubtitle}>Help a student on their learning journey with a Quranic Pro membership.</Text>
+            </View>
+            <Text style={styles.donateArrow}>→</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -61,23 +62,53 @@ export default function LeaderboardScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#FFFFFF' },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 8,
+    paddingBottom: 16,
   },
   title: { fontSize: 32, fontWeight: '800' },
-  addButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+  content: { 
+    flex: 1,
+    padding: 16,
+    justifyContent: 'space-between',
+  },
+  createGroupContainer: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  createGroupCard: {
+    backgroundColor: '#FDF3EC',
+    borderRadius: 16,
+    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+    width: '80%',
+    justifyContent: 'center',
+  },
+  createGroupIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     backgroundColor: '#F28C28',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  addButtonText: { fontSize: 24, color: '#FFFFFF', fontWeight: '700' },
-  content: { padding: 16, paddingBottom: 120 },
+  createGroupIconText: { 
+    fontSize: 24, 
+    color: '#FFFFFF', 
+    fontWeight: '700' 
+  },
+  createGroupContent: { flex: 1 },
+  createGroupTitle: { 
+    fontSize: 18, 
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  donateContainer: {
+    marginTop: 'auto',
+    marginBottom: 20,
+  },
   card: {
     backgroundColor: '#FDF3EC',
     marginBottom: 16,
